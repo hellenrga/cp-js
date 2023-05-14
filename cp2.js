@@ -5,6 +5,9 @@ const email = document.getElementById('email')
 const password = document.getElementById('password')
 const confirmPass = document.getElementById('CFpassword')
 
+const toggle = document.getElementById('btnDarkMode')
+const body = document.querySelector('body');
+
 let lblName = document.querySelector('#lblName')
 let lblSurname = document.querySelector('#lblSurname')
 let lblEmail = document.querySelector('#lblEmail')
@@ -101,6 +104,17 @@ confirmPass.addEventListener('keyup', () => {
 })
 
 
+toggle.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+
+    if (body.classList.contains('dark-mode')) {
+        btnDarkMode.textContent = 'Modo claro \u{01f506}';
+    } else {
+        btnDarkMode.textContent = 'Modo escuro \u{01f313}';
+    }
+  });
+
+
 function cadastrar(){
     if(validName && validSurname && validEmail && validPassword && validConf){
 
@@ -116,8 +130,8 @@ function cadastrar(){
         msgSuccess.innerHTML = ''
         msgSuccess.setAttribute('style', 'display: none')
 
-
     }
+
 }
 
 document.getElementById("submit").addEventListener("click", cadastrar)
